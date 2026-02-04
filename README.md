@@ -1,5 +1,7 @@
 # ZARC EPP Tester
 
+https://whois.registry.net.za/
+
 A Node.js EPP client for testing connections to ZARC (.co.za) registry in Operational Test Environment (OTE). This tool helps registrars test their integration with ZARC registry before going live.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -102,7 +104,7 @@ zarc-epp-tester/
 └── README.md               # This file
 
 
-Add /certs if you have the SSL files
+Add /certs if you have the SSL files. Also note that /others are just for more functions to perform.
 
 EPP Operations Supported
 1. Login/Logout
