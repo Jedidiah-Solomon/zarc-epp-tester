@@ -70,7 +70,7 @@ const waitFor = (timeout = 5000) =>
     console.log("Creating contact");
 
     const contactXml = contactCreateXML({
-      id: "TESTCONTACT001",
+      id: "TESTCONTACT003",
       name: "Test User",
       org: "Test Company",
       street: "123 Test Street",

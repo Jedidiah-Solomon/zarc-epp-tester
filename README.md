@@ -22,27 +22,31 @@ A Node.js EPP client for testing connections to ZARC (.co.za) registry in Operat
 
 ## Installation
 
-````bash
+```bash
 # Clone the repository
-git clone https://github.com/yourusername/zarc-epp-tester.git
+git clone https://github.com/Jedidiah-Solomon/zarc-epp-tester.git
+
 cd zarc-epp-tester
 
 # Install dependencies
 npm install
-Configuration
+
+# Configuration
 Copy the example environment file:
 
-bash
+
 cp config/zarc-example.env config/zarc.env
+
 Edit config/zarc.env with your ZARC OTE credentials:
 
-env
+# env
 EPP_HOST=ote.zarc.net.za
 EPP_PORT=700
 EPP_USER=your_ote_username
 EPP_PASS=your_ote_password
 TEST_DOMAIN=your-test-domain.co.za
-Available Tests
+
+# Available Tests
 The project includes the following test scripts:
 
 Test File	Description	Command
@@ -50,9 +54,10 @@ login.js	Tests EPP authentication	npm run test:login
 contact.js	Tests contact creation	npm run test:contact
 domain-check.js	Tests domain availability check	npm run test:domain-check
 domain-create-check.js	Tests complete domain registration workflow	npm run test:domain-create
-Usage
+
+# Usage
 Run Individual Tests
-bash
+
 # Test login functionality
 npm run test:login
 
@@ -68,13 +73,14 @@ npm run test:domain-create
 # Run all tests sequentially
 npm run test:all
 Run Tests Directly
-bash
+
 node tests/login.js
 node tests/contact.js
 node tests/domain-check.js
 node tests/domain-create-check.js
+
 Project Structure
-text
+
 zarc-epp-tester/
 ├── config/                    # Configuration files
 │   ├── zarc.env              # Your credentials (gitignored)
@@ -94,6 +100,10 @@ zarc-epp-tester/
 ├── package.json             # Project dependencies and scripts
 ├── LICENSE                  # MIT License
 └── README.md               # This file
+
+
+Add /certs if you have the SSL files
+
 EPP Operations Supported
 1. Login/Logout
 Secure authentication with ZARC registry
@@ -118,8 +128,8 @@ Includes required ZARC nameservers
 
 Proper authorization info
 
-API Reference
-Core Modules
+# API Reference
+## Core Modules
 epp/connect.js
 connectEpp(): Establishes TLS connection to ZARC EPP server
 
@@ -139,7 +149,7 @@ domainCheckXML(domain): Generates domain check XML
 epp/domainCreate.js
 domainCreateXML(params): Generates domain creation XML
 
-Testing Workflow
+## Testing Workflow
 Login Test: Verify credentials and connection
 
 Contact Creation: Create a test contact
@@ -148,7 +158,7 @@ Domain Check: Verify domain availability
 
 Domain Creation: Complete registration workflow
 
-ZARC Specific Requirements
+## ZARC Specific Requirements
 Required Service URIs
 urn:ietf:params:xml:ns:domain-1.0
 
@@ -158,14 +168,14 @@ urn:ietf:params:xml:ns:host-1.0
 
 urn:ietf:params:xml:ns:secDNS-1.1 (extension)
 
-Nameservers
+## Nameservers
 Default ZARC nameservers are included in domain creation:
 
 ns1.dns.net.za (196.41.139.49)
 
 ns2.dns.net.za (196.41.139.58)
 
-Response Codes
+## Response Codes
 1000: Command completed successfully
 
 1001: Command completed successfully; action pending
@@ -178,7 +188,7 @@ Response Codes
 
 5xxx: Server errors
 
-Troubleshooting
+## Troubleshooting
 Connection Issues
 Verify EPP_HOST and EPP_PORT in config/zarc.env
 
@@ -193,7 +203,7 @@ Verify credentials are for OTE environment (not live)
 
 Check if account is properly activated by ZARC
 
-XML Format Errors
+## XML Format Errors
 Ensure all required namespaces are included
 
 Verify contact IDs exist before domain creation
@@ -213,7 +223,7 @@ Push to the branch (git push origin feature/amazing-feature)
 
 Open a Pull Request
 
-License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Support
@@ -239,186 +249,4 @@ All contributors to this project
 Disclaimer
 This tool is for testing purposes only. Use in production environments at your own risk. Always test thoroughly in OTE before moving to live environment.
 
-text
-
-## **3. Update package.json with better scripts:**
-
-Update `package.json`:
-```json
-{
-  "name": "zarc-epp-tester",
-  "version": "1.0.0",
-  "description": "EPP Client for testing ZARC (.co.za) registry connections",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test:login": "node tests/login.js",
-    "test:contact": "node tests/contact.js",
-    "test:domain-check": "node tests/domain-check.js",
-    "test:domain-create": "node tests/domain-create-check.js",
-    "test:all": "node tests/login.js && node tests/contact.js && node tests/domain-check.js && node tests/domain-create-check.js",
-    "start": "node tests/login.js",
-    "lint": "echo 'No linter configured'",
-    "clean": "rm -rf node_modules package-lock.json"
-  },
-  "keywords": [
-    "zarc",
-    "epp",
-    "co.za",
-    "registry",
-    "domain",
-    "south-africa",
-    "registrar",
-    "accreditation"
-  ],
-  "author": "Hordanso",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hordanso/zarc-epp-tester.git"
-  },
-  "bugs": {
-    "url": "https://github.com/hordanso/zarc-epp-tester/issues"
-  },
-  "homepage": "https://github.com/hordanso/zarc-epp-tester#readme",
-  "dependencies": {
-    "dotenv": "^16.0.0"
-  },
-  "engines": {
-    "node": ">=16.0.0"
-  }
-}
-4. Create .gitignore file:
-Update .gitignore:
-
-gitignore
-# Dependencies
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Environment variables
-config/zarc.env
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Certificates
-certs/
-*.pem
-*.key
-*.crt
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Logs
-logs/
-*.log
-
-# Test outputs
-test-results/
-coverage/
-5. Initialize Git and commit:
-Run these commands in your terminal:
-
-bash
-# Initialize git repository
-git init
-
-# Add all files
-git add .
-
-# Create initial commit
-git commit -m "Initial commit: ZARC EPP Tester with comprehensive test suite"
-
-# Create main branch
-git branch -M main
-
-# Add remote origin (update with your GitHub repository URL)
-git remote add origin https://github.com/hordanso/zarc-epp-tester.git
-
-# Push to GitHub
-git push -u origin main
-6. Optional: Create index.js for programmatic usage:
-Create index.js:
-
-javascript
-/**
- * ZARC EPP Tester - Main Entry Point
- *
- * Programmatic interface for ZARC EPP testing operations.
- * Provides a clean API for integration into other applications.
- */
-
-export { connectEpp, sendEpp } from './epp/connect.js';
-export { loginXML, logoutXML } from './epp/login.js';
-export { contactCreateXML } from './epp/contactCreate.js';
-export { domainCheckXML } from './epp/domainCheck.js';
-export { domainCreateXML } from './epp/domainCreate.js';
-
-/**
- * Example usage:
- *
- * import { connectEpp, loginXML, sendEpp } from './index.js';
- *
- * const socket = connectEpp();
- * socket.on('connect', () => {
- *   sendEpp(socket, loginXML());
- * });
- */
-7. Quick Start Guide for Users:
-Create QUICKSTART.md:
-
-markdown
-# Quick Start Guide
-
-## 1-Minute Setup
-
-1. **Clone and install:**
-```bash
-git clone https://github.com/hordanso/zarc-epp-tester.git
-cd zarc-epp-tester
-npm install
-Configure credentials:
-
-bash
-cp config/zarc-example.env config/zarc.env
-# Edit config/zarc.env with your ZARC OTE credentials
-Test your connection:
-
-bash
-npm run test:login
-Common Test Scenarios
-Scenario 1: Complete Accreditation Testing
-bash
-# Run all tests in sequence
-npm run test:all
-Scenario 2: Debug Authentication Issues
-bash
-# Check login only
-npm run test:login
-Scenario 3: Test Domain Registration
-bash
-# Check if domain is available
-npm run test:domain-check
-
-# If available, register it
-npm run test:domain-create
-Need Help?
-Check the README.md for detailed documentation
-
-Review the test output for error messages
-
-Open an issue on GitHub if you find a bug
-````
+```

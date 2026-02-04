@@ -2,7 +2,19 @@
   "name": "zarc-epp-tester",
   "version": "1.0.0",
   "description": "A Node.js EPP client for testing connections to ZARC (.co.za) registry in Operational Test Environment (OTE). This tool helps registrars test their integration with ZARC registry before going live.",
-  "keywords": [],
+  "keywords": [
+    "zarc",
+    "epp",
+    "co.za",
+    "registry",
+    "domain",
+    "south-africa",
+    "registrar",
+    "accreditation",
+    "test",
+    "ote",
+    "epn"
+  ],
   "license": "MIT",
   "author": "Jedidiah Solomon",
   "type": "module",
@@ -11,8 +23,17 @@
     "test": "tests"
   },
   "scripts": {
-    "start:nira": "node server.js",
-    "start:zarc": "node epp/connect.js"
+    "test:host": "node tests/host-create.js",
+    "test:login": "node tests/login.js",
+    "test:contact": "node tests/contact.js",
+    "test:domain-check": "node tests/domain-check.js",
+    "test:domain-create": "node tests/domain-create-check.js",
+    "test:all": "npm run test:login && npm run test:contact && npm run test:domain-check && npm run test:domain-create",
+    "start": "npm run test:login",
+    "lint": "echo 'No linter configured'",
+    "clean": "rm -rf node_modules package-lock.json",
+    "preinstall": "echo 'Installing dependencies for ZARC EPP Tester...'",
+    "postinstall": "echo 'Dependencies installed. Run: cp config/zarc-example.env config/zarc.env'"
   },
   "dependencies": {
     "crypto": "^1.0.1",

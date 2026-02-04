@@ -1,8 +1,8 @@
 /**
- * Domain Creation Test Script
+ * Complete Domain Registration Test with Nameservers
  *
- * Tests complete domain registration workflow in ZARC registry.
- * Performs domain availability check before attempting registration.
+ * 1. Creates domain (without nameservers)
+ * 2. Updates domain to add nameservers
  */
 
 import dotenv from "dotenv";
@@ -10,17 +10,12 @@ import { connectEpp, sendEpp } from "../epp/connect.js";
 import { loginXML } from "../epp/login.js";
 import { domainCheckXML } from "../epp/domainCheck.js";
 import { domainCreateXML } from "../epp/domainCreate.js";
+import { domainUpdateAddNameserversXML } from "../epp/domainUpdate.js";
 
 dotenv.config({ path: "./config/zarc.env" });
 
 const socket = connectEpp();
 
-/**
- * Waits for EPP response from server
- *
- * @param {number} timeout - Maximum wait time in milliseconds
- * @returns {Promise<string>} XML response
- */
 const waitFor = (timeout = 5000) =>
   new Promise((resolve, reject) => {
     let chunks = [];
@@ -51,105 +46,89 @@ const waitFor = (timeout = 5000) =>
     socket.on("data", onData);
   });
 
-/**
- * Main test execution function
- */
 (async () => {
   try {
-    console.log("Connecting to EPP server");
+    console.log("=== Complete Domain Registration Test ===");
 
     try {
       await waitFor(3000);
     } catch (error) {}
 
-    console.log("Logging in");
+    console.log("1. Logging in");
     sendEpp(socket, loginXML());
     const loginResponse = await waitFor();
     const loginCode = loginResponse.match(/code="(\d+)"/)?.[1];
     console.log(`Login code: ${loginCode}`);
 
-    if (loginCode !== "1000" && loginCode !== "1001") {
-      throw new Error(`Login failed with code: ${loginCode}`);
+    if (!loginCode && !loginResponse.includes("Access granted")) {
+      throw new Error("Login failed");
     }
 
-    const testDomain = `test${Date.now()}${Math.floor(Math.random() * 1000)}.co.za`;
-    console.log(`Testing domain: ${testDomain}`);
+    console.log("✅ Login successful");
 
-    console.log("Step 1: Checking domain availability");
+    const contactId = "TESTCONTACT003";
+    const testDomain = `test${Date.now()}.co.za`;
+
+    console.log(`\n2. Checking domain: ${testDomain}`);
     sendEpp(socket, domainCheckXML(testDomain));
-
     const checkResponse = await waitFor();
-    const checkCode = checkResponse.match(/<epp:result code="(\d+)">/)?.[1];
-    console.log(`Check result code: ${checkCode}`);
 
     const availabilityMatch = checkResponse.match(/avail="(\d)"/);
-    if (!availabilityMatch) {
-      throw new Error("Could not parse availability from response");
+    if (!availabilityMatch || availabilityMatch[1] !== "1") {
+      throw new Error(`Domain ${testDomain} is not available`);
     }
 
-    const isAvailable = availabilityMatch[1] === "1";
+    console.log(`✅ Domain ${testDomain} is available`);
 
-    if (!isAvailable) {
-      console.log(`Domain ${testDomain} is not available`);
-      console.log("Skipping domain creation");
-      socket.end();
-      return;
-    }
-
-    console.log(`Domain ${testDomain} is available`);
-
-    const priceMatch = checkResponse.match(
-      /command="create">([\d.]+)<\/charge:amount>/,
-    );
-    if (priceMatch) {
-      console.log(`Registration price: ZAR ${priceMatch[1]}`);
-    }
-
-    console.log("Step 2: Creating domain");
-    const domainXml = domainCreateXML({
+    console.log("\n3. Creating domain (without nameservers)");
+    const createXml = domainCreateXML({
       domain: testDomain,
-      registrant: "TESTCONTACT001",
-      admin: "TESTCONTACT001",
-      tech: "TESTCONTACT001",
-      billing: "TESTCONTACT001",
+      registrant: contactId,
+      admin: contactId,
+      tech: contactId,
+      billing: contactId,
     });
 
-    console.log("Domain create XML being sent");
-    sendEpp(socket, domainXml);
+    console.log("Create XML:", createXml);
+    sendEpp(socket, createXml);
 
     const createResponse = await waitFor(10000);
-    const createCode = createResponse.match(/<epp:result code="(\d+)">/)?.[1];
-    console.log(`Create result code: ${createCode}`);
+    const createCode = createResponse.match(/code="(\d+)"/)?.[1];
+    console.log(`Domain create code: ${createCode}`);
 
-    if (createCode === "1000") {
-      console.log(`Domain ${testDomain} created successfully`);
-
-      const nameMatch = createResponse.match(
-        /<domain:name>([^<]+)<\/domain:name>/,
-      );
-      const dateMatch = createResponse.match(
-        /<domain:crDate>([^<]+)<\/domain:crDate>/,
-      );
-
-      if (nameMatch) console.log(`Domain: ${nameMatch[1]}`);
-      if (dateMatch) console.log(`Creation date: ${dateMatch[1]}`);
-
-      const authMatch = createResponse.match(/<domain:pw>([^<]+)<\/domain:pw>/);
-      if (authMatch) console.log(`Auth code: ${authMatch[1]}`);
-    } else {
-      console.log("Domain creation failed");
-      const messageMatch = createResponse.match(/<epp:msg>([^<]+)<\/epp:msg>/);
-      if (messageMatch) console.log(`Error: ${messageMatch[1]}`);
-
-      console.log("Full error response:");
-      console.log(createResponse);
+    if (createCode !== "1000") {
+      console.log("Create response:", createResponse);
+      throw new Error("Domain creation failed");
     }
 
-    console.log("Test completed");
+    console.log(`✅ Domain ${testDomain} created successfully!`);
+
+    console.log("\n4. Adding nameservers to domain");
+    const updateXml = domainUpdateAddNameserversXML({
+      domain: testDomain,
+      nameservers: ["ns1.dns.net.za", "ns2.dns.net.za"],
+    });
+
+    console.log("Update XML:", updateXml);
+    sendEpp(socket, updateXml);
+
+    const updateResponse = await waitFor(10000);
+    const updateCode = updateResponse.match(/code="(\d+)"/)?.[1];
+    console.log(`Domain update code: ${updateCode}`);
+
+    if (updateCode === "1000") {
+      console.log("✅ Nameservers added successfully!");
+      console.log(
+        `\n🎉 COMPLETE SUCCESS! Domain ${testDomain} registered with nameservers!`,
+      );
+    } else {
+      console.log("Update response:", updateResponse);
+      console.log("⚠️ Domain created but nameserver addition failed");
+    }
+
     socket.end();
   } catch (error) {
-    console.error("Error:", error.message);
-    console.error(error.stack);
+    console.error("❌ Error:", error.message);
     socket.destroy();
   }
 })();

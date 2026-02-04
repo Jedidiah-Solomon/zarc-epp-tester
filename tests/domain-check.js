@@ -72,10 +72,14 @@ const waitFor = (timeout = 5000) =>
     }
 
     console.log("Checking domain availability");
+
     const domainsToCheck = [
       `test-domain-${Date.now()}.co.za`,
       "hordanso.co.za",
-      "google.co.za",
+      "google.org.za",
+      "facebook.net.za",
+      "apple.web.za",
+      "zarc.web.za",
     ];
 
     for (const domain of domainsToCheck) {

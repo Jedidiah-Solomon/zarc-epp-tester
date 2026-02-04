@@ -3,6 +3,7 @@
  *
  * Provides XML templates for creating contact objects in ZARC registry.
  * Contacts represent domain registrants and associated parties.
+ * Simple version that works with ZARC OTE.
  */
 
 /**
@@ -14,7 +15,7 @@
  * @param {Object} params - Contact parameters
  * @param {string} params.id - Contact identifier
  * @param {string} params.name - Full name
- * @param {string} params.org - Organization name (optional)
+ * @param {string} [params.org] - Organization name (optional)
  * @param {string} params.street - Street address
  * @param {string} params.city - City
  * @param {string} params.sp - State/Province
