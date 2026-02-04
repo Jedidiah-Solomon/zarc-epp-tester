@@ -1,0 +1,23 @@
+{
+  "name": "zarc-epp-tester",
+  "version": "1.0.0",
+  "description": "A Node.js EPP client for testing connections to ZARC (.co.za) registry in Operational Test Environment (OTE). This tool helps registrars test their integration with ZARC registry before going live.",
+  "keywords": [],
+  "license": "MIT",
+  "author": "Jedidiah Solomon",
+  "type": "module",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start:nira": "node server.js",
+    "start:zarc": "node epp/connect.js"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {}
+}
