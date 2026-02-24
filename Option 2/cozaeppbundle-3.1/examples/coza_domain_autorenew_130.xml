@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+  <command>
+    <update>
+      <domain:update xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+        <domain:name>testdomain130.co.za</domain:name>
+      </domain:update>
+    </update>
+    <extension>
+      <cozad:update xmlns:cozad="http://co.za/epp/extensions/cozadomain-1-0">
+        <cozad:chg>
+          <cozad:autorenew>false</cozad:autorenew>
+        </cozad:chg>
+      </cozad:update>
+    </extension>
+    <clTRID>__CLTRID__</clTRID>
+  </command>
+</epp>

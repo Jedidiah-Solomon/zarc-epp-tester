@@ -1,0 +1,25 @@
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+  <command>
+    <create>
+      <contact:create xmlns:contact="urn:ietf:params:xml:ns:contact-1.0">
+        <contact:id>CONT123457</contact:id>
+        <contact:postalInfo type="loc">
+          <contact:name>Another Contact</contact:name>
+          <contact:addr>
+            <contact:street>456 Another Street</contact:street>
+            <contact:city>Cape Town</contact:city>
+            <contact:sp>Western Cape</contact:sp>
+            <contact:pc>8000</contact:pc>
+            <contact:cc>ZA</contact:cc>
+          </contact:addr>
+        </contact:postalInfo>
+        <contact:voice>+27.219876543</contact:voice>
+        <contact:email>another@example.co.za</contact:email>
+        <contact:authInfo>
+          <contact:pw>password2</contact:pw>
+        </contact:authInfo>
+      </contact:create>
+    </create>
+    <clTRID>__CLTRID__</clTRID>
+  </command>
+</epp>

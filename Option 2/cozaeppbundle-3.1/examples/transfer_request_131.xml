@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+  <command>
+    <transfer op="request">
+      <domain:transfer xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+        <domain:name>testdomain131.co.za</domain:name>
+        <domain:period unit="y">1</domain:period>
+      </domain:transfer>
+    </transfer>
+    <clTRID>__CLTRID__</clTRID>
+  </command>
+</epp>

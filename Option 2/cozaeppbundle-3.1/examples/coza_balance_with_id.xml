@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+  <command>
+    <info>
+      <cozac:info xmlns:cozac="http://co.za/epp/extensions/cozacontact-1-0">
+        <cozac:contactId>CONT123456</cozac:contactId>
+      </cozac:info>
+    </info>
+    <clTRID>__CLTRID__</clTRID>
+  </command>
+</epp>

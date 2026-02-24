@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+  <command>
+    <info>
+      <contact:info xmlns:contact="urn:ietf:params:xml:ns:contact-1.0">
+        <contact:id>CONT123456</contact:id>
+        <contact:authInfo>
+          <contact:pw>password</contact:pw>
+        </contact:authInfo>
+      </contact:info>
+    </info>
+    <extension>
+      <cozac:info xmlns:cozac="http://co.za/epp/extensions/cozacontact-1-0">
+        <cozac:balance>true</cozac:balance>
+      </cozac:info>
+    </extension>
+    <clTRID>__CLTRID__</clTRID>
+  </command>
+</epp>
+
+<!--# python epp.py --host=ote.zarc.net.za --port=700 --verbose login.xml coza_balance.xml
+  -->

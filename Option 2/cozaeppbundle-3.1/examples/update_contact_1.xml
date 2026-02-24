@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+  <command>
+    <update>
+      <contact:update xmlns:contact="urn:ietf:params:xml:ns:contact-1.0">
+        <contact:id>CONT123456</contact:id>
+        <contact:add>
+          <contact:status s="clientDeleteProhibited"/>
+        </contact:add>
+        <contact:chg>
+          <contact:postalInfo type="loc">
+            <contact:name>Updated Registrant Name</contact:name>
+            <contact:addr>
+              <contact:street>456 New Address Street</contact:street>
+              <contact:city>Pretoria</contact:city>
+              <contact:sp>Gauteng</contact:sp>
+              <contact:pc>0002</contact:pc>
+              <contact:cc>ZA</contact:cc>
+            </contact:addr>
+          </contact:postalInfo>
+          <contact:voice>+27.128887654</contact:voice>
+          <contact:email>updated@example.co.za</contact:email>
+          <contact:authInfo>
+            <contact:pw>newpassword123</contact:pw>
+          </contact:authInfo>
+          <contact:disclose flag="1">
+            <contact:voice/>
+            <contact:email/>
+          </contact:disclose>
+        </contact:chg>
+      </contact:update>
+    </update>
+    <clTRID>__CLTRID__</clTRID>
+  </command>
+</epp>
