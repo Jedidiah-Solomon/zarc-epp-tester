@@ -249,6 +249,11 @@ The EPP protocol community
 All contributors to this project
 
 Disclaimer
-This tool is for testing purposes only. Use in production environments at your own risk. Always test thoroughly in OTE before moving to live environment.
+This tool is for testing purposes only. Use in production environments at your own risk. Always test thoroughly in OTE before moving to live environment
 
+
+---
+
+## For Fast and Fully thoroughout testing
+Please use the Option 2
 ```
