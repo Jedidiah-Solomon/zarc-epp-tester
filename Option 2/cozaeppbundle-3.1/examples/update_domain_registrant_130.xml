@@ -3,12 +3,13 @@
   <command>
     <update>
       <domain:update xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
-        <domain:name>testdomain130.co.za</domain:name>
+        <domain:name>testdomain150.co.za</domain:name>
         <domain:chg>
-          <domain:registrant>TESTCONTACT001</domain:registrant>
+          <domain:registrant>CONT123456Jedy</domain:registrant>
         </domain:chg>
       </domain:update>
     </update>
     <clTRID>__CLTRID__</clTRID>
   </command>
 </epp>
+

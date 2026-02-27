@@ -1,0 +1,12 @@
+1. `python epp.py --host=ote.zarc.net.za --port=700 --verbose login.xml create_contact_fixed.xml`
+2. `python epp.py --host=ote.zarc.net.za --port=700 --verbose login.xml delete_contact_1.xml`
+3. `python epp.py --host=ote.zarc.net.za --port=700 --verbose login.xml create_domain_6.xml`
+4. `python epp.py --host=ote.zarc.net.za --port=700 --verbose login.xml update_domain_registrant_130.xml`
+5. ``python epp.py --host=ote.zarc.net.za --port=700 --verbose login.xml update_domain_add_status_130.xml`
+6. `python epp.py --host=ote.zarc.net.za --port=700 --verbose login.xml delete_domain_131_final.xml`
+7. `python epp.py --host=ote.zarc.net.za --port=700 --verbose login_secondary.xml transfer_request_130_secondary.xml`
+8. `python epp.py --host=ote.zarc.net.za --port=700 --verbose login.xml transfer_approve_130.xml`
+9. `python epp.py --host=ote.zarc.net.za --port=700 --verbose login_secondary.xml transfer_request_131_fixed.xml`
+10. `python epp.py --host=ote.zarc.net.za --port=700 --verbose login.xml renew_domain_130_fixed.xml`
+11. `python epp.py --host=ote.zarc.net.za --port=700 --verbose login.xml transfer_query_191.xml`
+12. `python epp.py --host=ote.zarc.net.za --port=700 --verbose login_secondary.xml transfer_request_131_final.xml`

@@ -3,7 +3,7 @@
   <command>
     <delete>
       <domain:delete xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
-        <domain:name>testdomain131.co.za</domain:name>
+        <domain:name>testdomain180.co.za</domain:name>
       </domain:delete>
     </delete>
     <clTRID>__CLTRID__</clTRID>

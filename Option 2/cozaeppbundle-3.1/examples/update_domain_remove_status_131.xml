@@ -3,7 +3,7 @@
   <command>
     <update>
       <domain:update xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
-        <domain:name>testdomain131.co.za</domain:name>
+        <domain:name>testdomain180.co.za</domain:name>
         <domain:rem>
           <domain:status s="serverHold"/>
         </domain:rem>

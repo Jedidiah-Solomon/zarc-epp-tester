@@ -3,20 +3,20 @@
   <command>
     <create>
       <domain:create xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
-        <domain:name>testdomain130.co.za</domain:name>
+        <domain:name>testdomain200.co.za</domain:name>
         <domain:ns>
           <domain:hostAttr>
-            <domain:hostName>ns1.testdomain130.co.za</domain:hostName>
+            <domain:hostName>ns1.testdomain200.co.za</domain:hostName>
             <domain:hostAddr ip="v4">192.0.2.1</domain:hostAddr>
           </domain:hostAttr>
           <domain:hostAttr>
-            <domain:hostName>ns2.testdomain130.co.za</domain:hostName>
+            <domain:hostName>ns2.testdomain200.co.za</domain:hostName>
             <domain:hostAddr ip="v4">192.0.2.2</domain:hostAddr>
           </domain:hostAttr>
         </domain:ns>
-        <domain:registrant>CONT123456</domain:registrant>
-        <domain:contact type="admin">CONT123456</domain:contact>
-        <domain:contact type="tech">CONT123456</domain:contact>
+        <domain:registrant>CONT123456Jedy</domain:registrant>
+        <domain:contact type="admin">CONT123456Jedy</domain:contact>
+        <domain:contact type="tech">CONT123456Jedy</domain:contact>
         <domain:contact type="billing">CONT123456</domain:contact>
         <domain:authInfo>
           <domain:pw>password</domain:pw>

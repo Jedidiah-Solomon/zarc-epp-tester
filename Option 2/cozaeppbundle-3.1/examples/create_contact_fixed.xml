@@ -2,7 +2,7 @@
   <command>
     <create>
       <contact:create xmlns:contact="urn:ietf:params:xml:ns:contact-1.0">
-        <contact:id>CONT123456</contact:id>
+        <contact:id>CONT123456Jedy2</contact:id>
         <contact:postalInfo type="loc">
           <contact:name>A Registrant</contact:name>
           <contact:addr>
@@ -23,3 +23,4 @@
     <clTRID>__CLTRID__</clTRID>
   </command>
 </epp>
+

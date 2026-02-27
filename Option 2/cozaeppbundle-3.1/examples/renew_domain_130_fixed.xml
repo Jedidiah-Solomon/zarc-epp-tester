@@ -3,8 +3,8 @@
   <command>
     <renew>
       <domain:renew xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
-        <domain:name>testdomain130.co.za</domain:name>
-        <domain:curExpDate>2027-02-18</domain:curExpDate>
+        <domain:name>testdomain191.co.za</domain:name>
+        <domain:curExpDate>2027-02-27</domain:curExpDate>
         <domain:period unit="y">1</domain:period>
       </domain:renew>
     </renew>

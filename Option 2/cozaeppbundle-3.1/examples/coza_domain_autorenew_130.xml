@@ -3,7 +3,7 @@
   <command>
     <update>
       <domain:update xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
-        <domain:name>testdomain130.co.za</domain:name>
+        <domain:name>testdomain191.co.za</domain:name>
       </domain:update>
     </update>
     <extension>

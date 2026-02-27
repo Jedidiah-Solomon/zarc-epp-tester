@@ -3,7 +3,7 @@
   <command>
     <update>
       <contact:update xmlns:contact="urn:ietf:params:xml:ns:contact-1.0">
-        <contact:id>CONT123456</contact:id>
+        <contact:id>CONT123456Jedy</contact:id>
         <contact:add>
           <contact:status s="clientDeleteProhibited"/>
         </contact:add>
@@ -33,3 +33,5 @@
     <clTRID>__CLTRID__</clTRID>
   </command>
 </epp>
+
+<!-- python epp.py --host=ote.zarc.net.za --port=700 --verbose login.xml update_contact_1.xml -->
