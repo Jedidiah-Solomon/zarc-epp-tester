@@ -5,7 +5,7 @@
       <domain:update xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
         <domain:name>testhdsdomain234.co.za</domain:name>
         <domain:rem>
-          <domain:status s="clientHold"/>
+          <domain:status s="serverHold"/>
         </domain:rem>
       </domain:update>
     </update>
