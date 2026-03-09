@@ -3,9 +3,9 @@
   <command>
     <update>
       <domain:update xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
-        <domain:name>testdomain150.co.za</domain:name>
+        <domain:name>testhdsdomain231.co.za</domain:name>
         <domain:chg>
-          <domain:registrant>CONT123456Jedy</domain:registrant>
+          <domain:registrant>Solomon2</domain:registrant>
         </domain:chg>
       </domain:update>
     </update>

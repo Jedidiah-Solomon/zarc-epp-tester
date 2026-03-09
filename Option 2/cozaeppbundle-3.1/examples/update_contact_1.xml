@@ -3,7 +3,7 @@
   <command>
     <update>
       <contact:update xmlns:contact="urn:ietf:params:xml:ns:contact-1.0">
-        <contact:id>CONT123456Jedy</contact:id>
+        <contact:id>Solomon2</contact:id>
         <contact:add>
           <contact:status s="clientDeleteProhibited"/>
         </contact:add>
@@ -12,7 +12,7 @@
             <contact:name>Updated Registrant Name</contact:name>
             <contact:addr>
               <contact:street>456 New Address Street</contact:street>
-              <contact:city>Pretoria</contact:city>
+              <contact:city>New City</contact:city>
               <contact:sp>Gauteng</contact:sp>
               <contact:pc>0002</contact:pc>
               <contact:cc>ZA</contact:cc>
@@ -34,4 +34,3 @@
   </command>
 </epp>
 
-<!-- python epp.py --host=ote.zarc.net.za --port=700 --verbose login.xml update_contact_1.xml -->

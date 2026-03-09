@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
   <command>
-    <poll op="ack" msgID="__MSGID__"/>
+    <poll op="ack" msgID="DAMS-POLL-27bc4cb4-0cf3-11f1-ba0d-0a5f1d481481"/>
     <clTRID>__CLTRID__</clTRID>
   </command>
 </epp>

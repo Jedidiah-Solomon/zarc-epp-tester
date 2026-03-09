@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+  <command>
+    <create>
+      <domain:create xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+        <domain:name>testhdsdomain235.co.za</domain:name>
+        <domain:ns>
+  <domain:hostAttr>
+    <domain:hostName>ns1.sedoparking.com</domain:hostName>
+  </domain:hostAttr>
+  <domain:hostAttr>
+    <domain:hostName>ns2.sedoparking.com</domain:hostName>
+  </domain:hostAttr>
+</domain:ns>
+        <domain:registrant>CONT123456Jedy</domain:registrant>
+        <domain:contact type="admin">CONT123456Jedy</domain:contact>
+        <domain:contact type="tech">CONT123456Jedy</domain:contact>
+        <domain:contact type="billing">CONT123456</domain:contact>
+        <domain:authInfo>
+          <domain:pw>password</domain:pw>
+        </domain:authInfo>
+      </domain:create>
+    </create>
+    <clTRID>__CLTRID__</clTRID>
+  </command>
+</epp>

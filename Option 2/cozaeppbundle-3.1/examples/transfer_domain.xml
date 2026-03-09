@@ -3,7 +3,7 @@
   <command>
     <transfer op="request">
       <domain:transfer xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
-        <domain:name>example.test.dnservices.co.za</domain:name>
+        <domain:name>testhdsdomain234.co.za</domain:name>
         <domain:period unit="y">1</domain:period>
       </domain:transfer>
     </transfer>
