@@ -254,6 +254,9 @@ This tool is for testing purposes only. Use in production environments at your o
 
 ---
 
-## For Fast and Fully thoroughout testing
-Please use the Option 2
+## For Fast and Fully thoroughout development and testing with SSL certificate
+Please use the Option 2 
+
+## For Development with SSL Certificate
+Use Option 3
 ```

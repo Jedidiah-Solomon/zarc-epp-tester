@@ -3,7 +3,7 @@
   <command>
     <create>
       <domain:create xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
-        <domain:name>testhdsdomain236.co.za</domain:name>
+        <domain:name>testhdsdomain240.co.za</domain:name>
         <domain:ns>
   <domain:hostAttr>
     <domain:hostName>ns1.sedoparking.com</domain:hostName>
