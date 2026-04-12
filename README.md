@@ -255,8 +255,141 @@ This tool is for testing purposes only. Use in production environments at your o
 ---
 
 ## For Fast and Fully thoroughout development and testing with SSL certificate
-Please use the Option 2 
+Please use the Option 2
 
 ## For Development with SSL Certificate
 Use Option 3
+```
+
+---
+
+# 📚 Complete COZA EPP WHMCS Module Installation Guide
+
+## Production Deployment Documentation
+
+---
+
+## 📋 Table of Contents
+
+- Prerequisites
+- File Upload
+- Permission Settings
+- SSL Certificate Setup
+- Cron Jobs Configuration
+- WHMCS Activation
+- Verification
+- Troubleshooting
+
+---
+
+## 1. Prerequisites
+
+### Required Files
+
+| File/Folder         | Source                     |
+| ------------------- | -------------------------- |
+| cozaepp/            | Module registrar directory |
+| awit_cozaepp/       | Module addon directory     |
+| cozaepp_balance.php | Module widget file         |
+| epp.pem             | SSL certificate from ZARC  |
+
+### Server Access
+
+- cPanel login credentials
+- SSH access (or cPanel File Manager)
+- WHMCS admin login
+
+---
+
+## 2. File Upload
+
+### Locate WHMCS Installation Path
+
+```bash
+ls -la /home/[username]/public_html/ | grep "init.php"
+
+Upload via cPanel File Manager
+Component	Source	Destination
+Registrar Module	cozaepp/	/modules/registrars/
+Addon Module	awit_cozaepp/	/modules/addons/
+Widget	cozaepp_balance.php	/modules/widgets/
+Upload via SCP (Alternative)
+
+Upload via SCP (Alternative)
+scp -r cozaepp/ [username]@[server]:/home/[username]/public_html/modules/registrars/
+scp -r awit_cozaepp/ [username]@[server]:/home/[username]/public_html/modules/addons/
+scp cozaepp_balance.php [username]@[server]:/home/[username]/public_html/modules/widgets/
+3. Permission Settings
+Set Directory Permissions (755)
+chmod -R 755 /modules/registrars/cozaepp/
+chmod -R 755 /modules/addons/awit_cozaepp/
+Set File Permissions (644)
+find /modules/registrars/cozaepp/ -type f -exec chmod 644 {} \;
+find /modules/addons/awit_cozaepp/ -type f -exec chmod 644 {} \;
+chmod 644 /modules/widgets/cozaepp_balance.php
+Set Ownership
+chown -R [username]:[username] /modules/registrars/cozaepp/
+chown -R [username]:[username] /modules/addons/awit_cozaepp/
+chown [username]:[username] /modules/widgets/cozaepp_balance.php
+Clear WHMCS Cache
+rm -rf /templates_c/*
+4. SSL Certificate Setup
+Create SSL Directory
+mkdir -p /ssl/
+Upload SSL Certificate
+scp epp.pem [username]@[server]:/home/[username]/public_html/ssl/
+Set Permissions
+chmod 755 /ssl/
+chmod 640 /ssl/epp.pem
+chown [username]:[username] /ssl/epp.pem
+5. Cron Jobs Configuration
+Add via Crontab
+crontab -e
+Add Jobs
+0 * * * * php -q /modules/registrars/cozaepp/cozaepppoll.php > /dev/null 2>&1
+*/4 * * * * php -q /crons/domainsync.php > /dev/null 2>&1
+Verify
+crontab -l
+6. WHMCS Activation
+Activate Registrar Module
+Setup → Products/Services → Domain Registrars
+Activate Cozaepp
+Configure Settings
+Setting	Value
+OT&E Mode	OFF
+Username	ZARC username
+Password	ZARC password
+EPPHost	epp.zarc.net.za
+EPPPort	700
+SSL	Enabled
+Certificate	/ssl/epp.pem
+Activate Addon Module
+Setup → Addon Modules
+Activate AWIT COZAEPP
+Assign Full Administrator access
+7. Verification
+Check Files
+ls -la /modules/registrars/cozaepp/
+ls -la /modules/addons/awit_cozaepp/
+WHMCS Logs
+Utilities → Logs → Module Log
+Test Domain
+Register test domain
+Ensure status = OK
+8. Troubleshooting
+Module Not Showing
+rm -rf /templates_c/*
+chmod 644 cozaepp.php
+SSL Issues
+php -r "echo file_exists('/ssl/epp.pem');"
+Cron Test
+php -q /cozaepppoll.php
+📝 Summary
+Component	Value
+Registrar	Cozaepp
+Host	epp.zarc.net.za
+Port	700
+SSL	Enabled
+Poll Cron	Hourly
+Sync Cron	Every 4 hours
 ```
